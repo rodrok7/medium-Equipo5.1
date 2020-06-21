@@ -126,7 +126,7 @@ var post ={
     }
 
     const preview = () => {
-        $("#previewImage") = $("#validationTooltip05").text
+        $("#previewImage") = $("#validationTooltip05").val
     }
     
     const loadContent = (contentUrl,callback) =>{
@@ -160,6 +160,31 @@ $.ajax(
         console.log(response);
     }
 });
+
 }
+
+const getPostData = () => {
+   
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        console.log(this.readyState)
+        console.log(this.status)
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(this.response)
+            console.log(response)
+            for (let post in response) {
+                console.log(post)
+                printPosts({...response[post]})
+                
+            }
+        }
+    };
+    xhttp.open("GET", "https://ajaxclass-1ca34.firebaseio.com/equipo5/post/.json", true);
+    xhttp.send();
+}
+getPostData()
+
+    
+
 
     
