@@ -17,9 +17,9 @@
 <header class="pt-2 pl-2 pr-2">
     <nav class="d-flex justify-content-between px-3">
         <div>
-            <img id="small-logo" src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png"
+            <img id="small-logo" onclick="loadContent('index.html')" src="https://miro.medium.com/max/195/1*emiGsBgJu2KHWyjluhKXQw.png"
                 class="d-inline d-md-none ">
-            <img id="main-logo" src="https://miro.medium.com/max/1090/1*TGH72Nnw24QL3iV9IOm4VA.png"
+            <img id="main-logo" onclick="loadContent('index.html')" src="https://miro.medium.com/max/1090/1*TGH72Nnw24QL3iV9IOm4VA.png"
                 class="d-none d-md-inline" style="" >
         </div>
         <div class="d-flex align-items-center">
@@ -46,7 +46,7 @@
                     d="M8 1.918l-.797.161A4.002 4.002 0 004 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 00-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 111.99 0A5.002 5.002 0 0113 6c0 .88.32 4.2 1.22 6z"
                     clip-rule="evenodd" />
             </svg>
-           <button class="btn border border-dark btn-sm btn-lg" style="white-space: nowrap;" >New Post </button>
+           <button class="btn border border-dark btn-sm btn-lg" onclick="loadContent('form.html',handleSubmitClick)" style="white-space: nowrap;" >New Post </button>
             <img class="rounded-circle rounded-icon mx-3"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQll4T5OfofBM0UJLri9wKU0mAAgkFlaLyfFGXwP7RmxEKj24zz&usqp=CAU"
                 alt="">
@@ -73,7 +73,7 @@
 
 
 <body>
-    <div class=" fluid-container pt-4 pl-4 pr-4">
+    <div id="main-container" class=" fluid-container pt-4 pl-4 pr-4">
         
                 <div class="row">
                     <!---Primer card / card de la izquierda-->
