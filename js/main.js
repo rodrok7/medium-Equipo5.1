@@ -169,6 +169,22 @@ const getPostData = () => {
     xhttp.open("GET", "https://ajaxclass-1ca34.firebaseio.com/equipo5/post/.json", true);
     xhttp.send();
 }
+
+const showModal = () =>{
+    $("#card1Modal").modal("show");
+  }
+$("#card1").click(showModal)
+
+const showModal2 = () =>{
+    $("#card2Modal").modal("show");
+  }
+
+$("#card2").click(showModal2)
+
+
+
+
+
 getPostData()
 
 
