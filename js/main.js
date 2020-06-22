@@ -1,35 +1,5 @@
-var post ={
-    tittle : "Half the Cost of School lunch goes to a 60 Cent Brown",
-    content: "contenido de prueba",
-    date: "June 20",
-    tipe: "new",
-    autor: "Ricardo Picazo", 
-    timereading:"6 min",
-    url:"https://cdn-images-1.medium.com/fit/c/152/156/1*7c0StzgxruNIIdgygmhP1A.jpeg"
-    }
-    
-    var post2 ={
-        tittle : "Half the Cost of School lunch goes to a 60 Cent Brown",
-        content: "contenido de prueba",
-        date: "June 20",
-        tipe: "popular",
-        autor: "Ricardo Picazo", 
-        timereading:"6 min",
-        url:"https://cdn-images-1.medium.com/fit/c/152/156/1*7c0StzgxruNIIdgygmhP1A.jpeg"
-        }
-    
-    var post3 ={
-            tittle : "Half the Cost of School lunch goes to a 60 Cent Brown",
-            content: "contenido de prueba",
-            date: "June 20",
-            tipe: "comun",
-            autor: "Ricardo Picazo", 
-            timereading:"6 min",
-            url:"https://cdn-images-1.medium.com/fit/c/152/156/1*7c0StzgxruNIIdgygmhP1A.jpeg"
-            }
-    
+
     const printPosts = (postObject) => {
-    
      const { tittle, content, date,tipe,autor,timereading,url } = postObject
      console.log(tittle)
      console.log(content)
@@ -46,7 +16,7 @@ var post ={
                 <h5 class="text-dark hoover-h">${tittle}
                 </h5>
                 </div>
-                <span class="hoover-h ml-5">${autor}</span>
+                <p class="hoover-h ml-5">${autor}</p>
                 <div class="row ml-5">
                 <div class="m-0">
                     <p class="card-text"><small class="text-muted">${date} • ${timereading} read</small> <span
@@ -55,7 +25,6 @@ var post ={
             </div>
                 `) 
                 break;
-    
             case "new":
                 $("#new-wrapper").append(`
                 <div class="card mb-3 border-white">
@@ -63,7 +32,6 @@ var post ={
                     <div class="col-8">
                         <div class="card-body py-0">
                             <h5 class="card-title">${tittle}</h5>
-                            <p class="card-text text-muted">${content}</p>
                             <p class="card-text m-0">${autor}</p>
                             <div class="row">
                                 <div class="col-10">
@@ -82,7 +50,7 @@ var post ={
                     </div>
                     <div class="col-4">
                         <div class="h-100 w-100">
-                            <img src="https://cdn-images-1.medium.com/focal/200/200/43/29/1*BPavVa0FWuIXQ0moqBepsA.jpeg"
+                            <img src="${url}"
                                 class="card-img" alt="...">
                         </div>
                     </div>
@@ -90,7 +58,6 @@ var post ={
             </div>
             `) 
             break;
-    
             case "comun":
                 $("#comun-wrapper").append(`
                 <div class="col-8 d-flex flex-column pl-5 pb-5">
@@ -98,7 +65,7 @@ var post ={
                 <h4 class="hoover-h">${tittle}</h4>
                 <p class="text-muted font-weight-light">${content}</p>
                 <div class="d-flex justify-content-start">
-                    <p class="mx-2">in</p><span class="hoover-h">${autor}</span>
+                <span class="hoover-h">${autor}</span>
                 </div>
                 <div class="row">
                     <div class="col-6 d-flex justify-content-around">
@@ -121,37 +88,61 @@ var post ={
             default:
                 console.log("no puedo realizar la operación seleccionada")
         } 
-    
-       
     }
 
     const preview = () => {
-        $("#previewImage") = $("#validationTooltip05").val
+        var preesKeyShowAutor = document.getElementById('autor-input')
+        preesKeyShowAutor.addEventListener("keyup",() =>{
+        let textintime = preesKeyShowAutor.value
+        let postWrapper = document.getElementById("previewAutor")
+        postWrapper.innerHTML = textintime
+        })
+        var preesKeyShowTittle = document.getElementById('tittle-input')
+        preesKeyShowTittle.addEventListener("keyup",() =>{
+        let textintime = preesKeyShowTittle.value
+        let postWrapper = document.getElementById("previewTittle")
+        postWrapper.innerHTML = textintime
+        })
+        var preesKeyShowContent = document.getElementById('content-input')
+        preesKeyShowContent.addEventListener("keyup",() =>{
+        let textintime = preesKeyShowContent.value
+        let postWrapper = document.getElementById("previewContent")
+        postWrapper.innerHTML = textintime
+        })
+        var preesKeyShowDate = document.getElementById('date-input')
+        preesKeyShowDate.addEventListener("keyup",() =>{
+        let textintime = preesKeyShowDate.value
+        let postWrapper = document.getElementById("previewDate")
+        postWrapper.innerHTML = textintime
+        })
+        var preesKeyShowTime = document.getElementById('time-input')
+        preesKeyShowTime.addEventListener("keyup",() =>{
+        let textintime = preesKeyShowTime.value
+        let postWrapper = document.getElementById("previewTimeReading")
+        postWrapper.innerHTML = textintime
+        })
+        
     }
+    
     
     const loadContent = (contentUrl,callback) =>{
         $("#main-container").load(contentUrl,callback)
     }
     const handleSubmitClick = () => {
         $("#submit").click(getFormData)
+        preview()
     }
-    
     var postObject = {}
-    
     const getFormData = () => {
-        
         $('input').each(function (index) {
             let objectKey = $(this).data("points-to");
             let value = $(this).val();
             postObject[objectKey] = value;
-            
         })
      console.log(postObject)
      savePost(postObject)
     }
-    
     $("#submit").click(getFormData)
-
 const savePost = (postObject) => {
 $.ajax(
     {url:`https://ajaxclass-1ca34.firebaseio.com/equipo5/post/.json`,
@@ -160,11 +151,8 @@ $.ajax(
         console.log(response);
     }
 });
-
 }
-
 const getPostData = () => {
-   
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         console.log(this.readyState)
@@ -175,7 +163,6 @@ const getPostData = () => {
             for (let post in response) {
                 console.log(post)
                 printPosts({...response[post]})
-                
             }
         }
     };
@@ -183,6 +170,7 @@ const getPostData = () => {
     xhttp.send();
 }
 getPostData()
+
 
     
 
