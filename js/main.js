@@ -13,7 +13,7 @@
                 $("#popular-wrapper").append(`
                 <div class="d-inline-flex mt-5">
                 <h3 class="mr-3 text-black-50">01</h3>
-                <h5 class="text-dark hoover-h">${tittle}
+                <h5 class="text-dark hoover-h cardModalPopular">${tittle}
                 </h5>
                 </div>
                 <p class="hoover-h ml-5">${autor}</p>
@@ -24,6 +24,7 @@
                 </div>
             </div>
                 `) 
+                $(".cardModalPopular").click(showModalPopular)
                 break;
             case "new":
                 $("#new-wrapper").append(`
@@ -31,7 +32,7 @@
                 <div class="row no-gutters flex-md-row-reverse p-0" id="blog-reverse">
                     <div class="col-8">
                         <div class="card-body py-0">
-                            <h5 class="card-title">${tittle}</h5>
+                            <h5 class="card-title newModal">${tittle}</h5>
                             <p class="card-text m-0">${autor}</p>
                             <div class="row">
                                 <div class="col-10">
@@ -57,12 +58,13 @@
                 </div>
             </div>
             `) 
+            $(".newModal").click(showNewModal)
             break;
             case "comun":
                 $("#comun-wrapper").append(`
-                <div class="col-8 d-flex flex-column pl-5 pb-5">
+                <div class="col-8 d-flex flex-column pl-5 pb-5 popularModal">
                 <h6 class="text-muted font-weight-light">BASED ON YOUR READING HISTORY</h6>
-                <h4 class="hoover-h">${tittle}</h4>
+                <h4 class="hoover-h comunModal">${tittle}</h4>
                 <p class="text-muted font-weight-light">${content}</p>
                 <div class="d-flex justify-content-start">
                 <span class="hoover-h">${autor}</span>
@@ -84,6 +86,7 @@
                 <img src="${url}" class="card-img" alt="...">
             </div>
                 `)
+                $(".comunModal").click(showComunModal)
                 break;
             default:
                 console.log("no puedo realizar la operación seleccionada")
@@ -181,11 +184,38 @@ const showModal2 = () =>{
 
 $("#card2").click(showModal2)
 
+const showModalPopular = () =>{
+    $("#popularModal").modal("show");
+  }
+  
+  const showNewModal = () =>{
+    $("#newModal").modal("show");
+  }
+
+  const showComunModal = () =>{
+    $("#comunModal").modal("show");
+  }
+let viewportWidth = $(window).innerWidth();
+console.log(viewportWidth)
+
+const navbarScroll = (direction) => {
+   if (direction === 'left' && viewportWidth < 1024){
+       $("ul").animate({scrollLeft : '-=50px'}, 'fast')
+   } else if (direction === 'right' && viewportWidth < 1024){
+    $("ul").animate({scrollLeft : '+=50px'}, 'fast')
+   } else if (direction === 'left' && viewportWidth > 1024){
+    $("ul").animate({scrollLeft : '-=50px'}, 'fast')
+   } else if (direction === 'right' && viewportWidth > 1024){
+    $("ul").animate({scrollLeft : '+=50px'}, 'fast')
+   }
+   
+}
 
 
 
 
 getPostData()
+
 
 
     

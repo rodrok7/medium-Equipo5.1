@@ -197,16 +197,50 @@ h5 {
   font-size: 75%;
 }
 
-  .table{
-    box-shadow: 2px 2px 2px 2px gray;
-  }
-  @media only screen and (min-width : 768px){
-
+@media only screen and (min-width: 768px) {
   aside {
     position: -webkit-sticky;
     /* Safari */
     position: sticky;
     top: 0;
   }
+}
+
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+nav .nav-control {
+  position: absolute;
+  top: 5px;
+}
+
+nav .nav-control.left {
+  left: 0;
+}
+
+nav .nav-control.right {
+  right: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  width: calc(100% - 80px);
+  white-space: nowrap;
+  overflow: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ul::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
