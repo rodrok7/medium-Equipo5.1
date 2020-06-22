@@ -146,6 +146,7 @@
      savePost(postObject)
     }
     $("#submit").click(getFormData)
+
 const savePost = (postObject) => {
 $.ajax(
     {url:`https://ajaxclass-1ca34.firebaseio.com/equipo5/post/.json`,
@@ -155,6 +156,16 @@ $.ajax(
     }
 });
 }
+const deletePost = (postObject) => {
+    $.ajax(
+        {url:`https://ajaxclass-1ca34.firebaseio.com/equipo5/post/-MAOMHTluyCpL70q4icw.json`,
+        method:"DELETE",
+        success: (response)=> {
+            console.log(response);
+        }
+    });
+    }
+
 const getPostData = () => {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
